@@ -48,7 +48,7 @@ def tokenize(line):
     return tokens
 
 
-def evaluate(tokens):
+def evaluate(tokens):   #掛け算の処理
     answer = 0
     tokens2 = []
     tokens.insert(0, {'type': 'PLUS'}) # Insert a dummy '+' token. insert(n, a):n番目の要素の前にaを新しい要素として追加
@@ -65,6 +65,10 @@ def evaluate(tokens):
         else:
             tokens2.append(tokens[index])
         index += 1
+    return tokens2
+
+
+def evaluate2(tokens2):    #足し算引き算の処理
     index = 1
     answer = 0
     while index < len(tokens2):
@@ -104,5 +108,6 @@ while True:
     print '> ',
     line = raw_input()
     tokens = tokenize(line)
-    answer = evaluate(tokens)
+    tokens2 = evaluate(tokens)
+    answer = evaluate2(tokens2)
     print "answer = %f\n" % answer
